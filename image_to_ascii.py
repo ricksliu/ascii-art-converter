@@ -1,8 +1,5 @@
 from PIL import Image
 
-FILE = "gradient.jpg"
-size = 201
-
 
 def print_ascii(file, width):
     image = Image.open(file)
@@ -95,7 +92,3 @@ def print_ascii(file, width):
     for row in ascii:
         output += "\n" + "".join(row)
     print(output)
-    input()
-
-
-print_ascii(FILE, size)

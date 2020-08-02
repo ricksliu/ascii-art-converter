@@ -2,7 +2,7 @@ import cv2
 
 FILE = "video.mp4"
 PATH = "frames/"
-FRAME_SKIP = 3  # Every Xth frame is captured
+FRAME_SKIP = 6  # Every Xth frame is captured
 
 
 def get_frames(file, path, frame_skip):
