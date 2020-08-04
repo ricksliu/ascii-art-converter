@@ -10,7 +10,7 @@ def print_ascii(file, width):
 
     # Outputted dimensions
     w_out = width
-    h_out = w_out * 2 * h / w / 5  # Height scaled down 5/2 times since characters are taller than they are wide
+    h_out = w_out * h / w / 2  # Height is halved since characters are taller than they are wide
 
     # 2D list of RGB values of pixels
     rgb = list()
