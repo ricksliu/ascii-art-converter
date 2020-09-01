@@ -1,10 +1,13 @@
+# Takes an inputted image file and generates ASCII art from it
+
 from PIL import Image
 
 
-def print_ascii(file, width):
+def generate_ascii(file, width):
     image = Image.open(file)
     pixels = image.load()
 
+    # Inputted image's dimensions
     w = image.size[0]
     h = image.size[1]
 
@@ -12,25 +15,18 @@ def print_ascii(file, width):
     w_out = width
     h_out = w_out * h / w / 2  # Height is halved since characters are taller than they are wide
 
-    # 2D list of RGB values of pixels
+    # 2D list of RGB values of pixels, scaled to outputted dimensions
     rgb = list()
-    y = 0
-    while y < h_out:
-        x = 0
+    for y in range(int(h_out)):
         row = list()
-
-        while x < w_out:
+        for x in range(w_out):
             row.append(pixels[int(float(x) * w / w_out), int(float(y) * h / h_out)][:3])
-            x += 1
-
         rgb.append(row)
-        y += 1
 
     # Creates 2D list of ascii characters based on RGB values
     ascii = list()
     for y in rgb:
         row = list()
-
         for pixel in y:
             # If (reasonably) gray
             average_rgb = (pixel[0] + pixel[1] + pixel[2]) / 3.0
@@ -87,8 +83,8 @@ def print_ascii(file, width):
 
         ascii.append(row)
 
-    # Prints single string rather than line by line so the entire image appears instantaneously
+    # Creates single string rather than many lines so the entire image is printed instantaneously
     output = ""
     for row in ascii:
         output += "\n" + "".join(row)
-    print(output)
+    return output

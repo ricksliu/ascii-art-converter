@@ -1,19 +1,30 @@
 from time import sleep
-from image_to_ascii import print_ascii
+from image_to_ascii import generate_ascii
 
 PATH = "frames/"
 WIDTH = 180
-frame_rate = 24
+FRAME_RATE = 24
 
-input("")
-
+# Loops and generates ASCII art for each frame
+ascii = list()
 frame = 0
 try:
     while True:
-        print_ascii("%s%d.jpg" % (PATH, frame), WIDTH)
+        ascii.append(generate_ascii("%s%d.jpg" % (PATH, frame), WIDTH))
+
+        if (frame + 1) % 100 == 0:
+            print("Generated up to frame " + str(frame + 1) + ".")
+
         frame += 1
-        # sleep(1.0 / frame_rate)
-except:
+
+except FileNotFoundError:
     pass
 
-input("")
+input("ASCII generation finished. Generated " + str(frame + 1) + " frames. Press enter.")
+
+# Prints according to FRAME_RATE
+for a in ascii:
+    print(a)
+    sleep(1.0 / FRAME_RATE)
+
+input("Process finished. Press enter.")
