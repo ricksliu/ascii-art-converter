@@ -4,9 +4,11 @@ import os
 import cv2
 
 
-FILE = "video.mp4"
-PATH = "frames/"
-FRAME_SKIP = 1  # Every Xth frame is captured; 1 means every frame is captured
+settings_file = open("settings.txt", "r")
+FILE = settings_file.readline().strip().split()[1]
+PATH = settings_file.readline().strip().split()[1]
+FRAME_SKIP = int(settings_file.readline().strip().split()[1])  # Every Xth frame is captured; 1 means every frame is captured
+settings_file.close()
 
 
 def get_frames(file, path, frame_skip):
@@ -15,24 +17,28 @@ def get_frames(file, path, frame_skip):
     for frame in frames:
         os.remove(os.path.join(path, frame))
 
-    video_capture = cv2.VideoCapture(file)
+    video = cv2.VideoCapture(file)
+
+    # Stores frame rate of video in file
+    frame_rate_file = open("%sframe_rate.txt" % path, "w")
+    frame_rate_file.write(str(video.get(cv2.CAP_PROP_FPS) / frame_skip))
+    frame_rate_file.close()
 
     # Loops until it reaches the end of the video
-    success, image = video_capture.read()
-    frame_num = 0
+    frame = 0
+    success, image = video.read()
     while success:
-        cv2.imwrite("%s%d.jpg" % (path, frame_num), image)  # Saves frame as JPEG file; file names start from 0.jpg
+        cv2.imwrite("%s%d.jpg" % (path, frame), image)  # Saves frame as JPEG file; file names start from 0.jpg
 
-        if (frame_num + 1) % 100 == 0:
-            print("Generated up to frame " + str(frame_num + 1) + ".")
+        frame += 1
+        if (frame) % 100 == 0:
+            print("Generated up to frame " + str(frame) + ".")
 
         # Captures next Xth frame, based on frame_skip
         for i in range(frame_skip):
-            success, image = video_capture.read()
+            success, image = video.read()
 
-        frame_num += 1
-
-    input("Frame generation finished. Generated " + str(frame_num + 1) + " frames. Press enter.")
+    input("Frame generation finished. Generated " + str(frame) + " frames. Press enter.")
 
 
 get_frames(FILE, PATH, FRAME_SKIP)

@@ -1,26 +1,33 @@
 import time
 from image_to_ascii import generate_ascii
 
-PATH = "frames/"
-WIDTH = 100
-FRAME_RATE = 24
+
+settings_file = open("settings.txt", "r")
+settings_file.readline()
+PATH = settings_file.readline().strip().split()[1]
+settings_file.readline()
+WIDTH = int(settings_file.readline().strip().split()[1])  # Number of characters per line
+settings_file.close()
+
+frame_rate_file = open("%sframe_rate.txt" % PATH, "r")
+FRAME_RATE = float(frame_rate_file.readline().strip())
+frame_rate_file.close()
 
 # Loops and generates ASCII art for each frame
-ascii = list()
 frame = 0
+ascii = list()
 try:
     while True:
         ascii.append(generate_ascii("%s%d.jpg" % (PATH, frame), WIDTH))
 
-        if (frame + 1) % 100 == 0:
-            print("Generated up to frame " + str(frame + 1) + ".")
-
         frame += 1
+        if (frame) % 100 == 0:
+            print("Generated up to frame " + str(frame) + ".")
 
 except FileNotFoundError:
     pass
 
-input("ASCII generation finished. Generated " + str(frame + 1) + " frames. Press enter.")
+input("ASCII generation finished. Generated " + str(frame) + " frames. Press enter.")
 
 # Prints according to FRAME_RATE
 a = 0
