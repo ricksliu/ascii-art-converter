@@ -27,52 +27,52 @@ def generate_ascii(file, width):
             # If (reasonably) gray
             average_rgb = (pixel[0] + pixel[1] + pixel[2]) / 3.0
             if abs(pixel[0] - average_rgb) < 50 and abs(pixel[1] - average_rgb) < 50 and abs(pixel[2] - average_rgb) < 50:
-                if 0 <= average_rgb < 51:
+                if average_rgb < 51:
                     output += " "
-                elif 51 <= average_rgb < 102:
+                elif average_rgb < 102:
                     output += "."
-                elif 102 <= average_rgb < 153:
+                elif average_rgb < 153:
                     output += "="
-                elif 153 <= average_rgb < 204:
+                elif average_rgb < 204:
                     output += "?"
                 else:
                     output += "@"
 
             # If (reasonably) red
             elif pixel[0] >= pixel[1] and pixel[0] >= pixel[2]:
-                if 0 <= pixel[0] < 51:
+                if pixel[0] < 51:
                     output += " "
-                elif 51 <= pixel[0] < 102:
+                elif pixel[0] < 102:
                     output += ","
-                elif 102 <= pixel[0] < 153:
+                elif pixel[0] < 153:
                     output += "*"
-                elif 153 <= pixel[0] < 204:
+                elif pixel[0] < 204:
                     output += "/"
                 else:
                     output += "#"
 
             # If (reasonably) green
             elif pixel[1] >= pixel[0] and pixel[1] >= pixel[2]:
-                if 0 <= pixel[1] < 51:
+                if pixel[1] < 51:
                     output += " "
-                elif 51 <= pixel[1] < 102:
+                elif pixel[1] < 102:
                     output += "`"
-                elif 102 <= pixel[1] < 153:
+                elif pixel[1] < 153:
                     output += "+"
-                elif 153 <= pixel[1] < 204:
+                elif pixel[1] < 204:
                     output += "\\"
                 else:
                     output += "$"
 
             # If (reasonably) blue
             else:
-                if 0 <= pixel[2] < 51:
+                if pixel[2] < 51:
                     output += " "
-                elif 51 <= pixel[2] < 102:
+                elif pixel[2] < 102:
                     output += "'"
-                elif 102 <= pixel[2] < 153:
+                elif pixel[2] < 153:
                     output += "-"
-                elif 153 <= pixel[2] < 204:
+                elif pixel[2] < 204:
                     output += "|"
                 else:
                     output += "&"
