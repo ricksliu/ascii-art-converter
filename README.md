@@ -12,7 +12,7 @@ Converts videos into ASCII art and prints it into the terminal, made in Python w
 
 settings.txt contains various configurable options:
 
-* FRAME_SKIP controls how many frames are processed. 1 = every frame, 4 = every 4 frame2, etc.
+* FRAME_SKIP controls how many frames are processed. 1 = every frame, 4 = every 4 frames, etc.
 
 * WIDTH controls how many characters to generate per line.
 
