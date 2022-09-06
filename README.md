@@ -1,21 +1,9 @@
 # ascii-art-converter
 
-Converts videos into ASCII art and prints it into the terminal, made in Python with cv2 and PIL.
+Converts videos into ASCII art. Made with Python, cv2, PIL and moviepy.
 
-## How to Use:
+## Instructions
 
-1. Place a file called video.mp4 into this directory.
-2. Run video_to_frames.py.
-3. Then, run main.py.
+1. Place videos in `input/`.
 
-## Settings:
-
-settings.txt contains various configurable options:
-
-* FRAME_SKIP controls how many frames are processed. 1 = every frame, 4 = every 4 frames, etc.
-
-* WIDTH controls how many characters to generate per line.
-
-## Video Example of Output:
-
-[![ASCII Art Converter - Video Example of Output](http://img.youtube.com/vi/DZLYPMwg6bI/0.jpg)](http://www.youtube.com/watch?v=DZLYPMwg6bI "ASCII Art Converter - Video Example of Output")
+2. Run `main.py`. Converted videos will appear in `output/`.
