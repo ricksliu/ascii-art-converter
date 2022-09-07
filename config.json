@@ -1,6 +1,7 @@
 {
     "inputPath": "input/*.mp4",
     "outputPath": "output/",
-    "asciiPattern": " .:-=+*#%@",
-    "asciiLength": 128
+    "pattern": " .:-=+*#%@",
+    "asciiResW": 64,
+    "videoResH": 720
 }
