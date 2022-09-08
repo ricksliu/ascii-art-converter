@@ -5,7 +5,7 @@ import cv2
 from moviepy.editor import VideoFileClip
 
 import font_util
-import ascii_util
+import image_ascii_util
 
 
 config_path = "config.json"
@@ -16,6 +16,7 @@ with open(config_path) as file:
     PATTERN = config["pattern"]
     ASCII_RES_W = config["asciiResW"]
     VIDEO_RES_H = config["videoResH"]
+    CONTRAST_BOOST = config["contrastBoost"]
 
 for input_path in INPUT_PATH:
     file_name = os.path.basename(input_path)
@@ -37,8 +38,8 @@ for input_path in INPUT_PATH:
     success, input_image = input_video.read()
     curr_frame = 1
     while success:
-        output_ascii = ascii_util.image_to_ascii(input_image, ASCII_RES_W, PATTERN, font_height_to_width)
-        output_image = ascii_util.ascii_to_image(output_ascii, output_width, output_height, font)
+        output_ascii = image_ascii_util.image_to_ascii(input_image, ASCII_RES_W, PATTERN, font_height_to_width, CONTRAST_BOOST)
+        output_image = image_ascii_util.ascii_to_image(output_ascii, output_width, output_height, font)
         output_video.write(output_image)
 
         if curr_frame % 10 == 0:

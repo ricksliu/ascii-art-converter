@@ -31,8 +31,6 @@ def get_font(font_path, num_chars, target_width):
             curr_font_size = next_font_size
             curr_width = next_width
 
-        print("{} {} {} {} {}".format(prev_font_size, curr_font_size, prev_width, curr_width, target_width))
-
         if abs(prev_font_size - curr_font_size) <= 1:
             return ImageFont.truetype(font_path, curr_font_size - 1 if curr_width >= target_width else curr_font_size)  # If guess is on the larger end, subtract 1
 
