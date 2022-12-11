@@ -4,9 +4,9 @@ Converts videos into ASCII art. Uses Python with opencv, pillow and moviepy.
 
 ## Instructions
 
-1. Place videos in `input/`. Various settings can be changed in `src/config.json`.
+1. Place videos in `input/`. Various settings can be changed in `config.json`.
 
-2. Run `src/main.py`. Converted videos will appear in `output/`.
+2. Run `main.bat`. Converted videos will appear in `output/`.
 
 ## Demo Video
 

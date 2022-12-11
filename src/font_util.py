@@ -34,6 +34,7 @@ def get_font(font_path, num_chars, target_width):
         if abs(prev_font_size - curr_font_size) <= 1:
             return ImageFont.truetype(font_path, curr_font_size - 1 if curr_width >= target_width else curr_font_size)  # If guess is on the larger end, subtract 1
 
+
 def get_font_height_to_width(font):
     num_lines = 100
     sample_text = "\n".join(["X"] * num_lines)

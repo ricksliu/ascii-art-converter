@@ -7,6 +7,7 @@ def get_brightness(image, x, y):
     bgr = image[y, x].tolist()
     return (bgr[0] + bgr[1] + bgr[2]) / 3
 
+
 def image_to_ascii(input_image, output_width, pattern, font_height_to_width, contrast_boost):
     input_width = input_image.shape[1]
     input_height = input_image.shape[0]
@@ -33,6 +34,7 @@ def image_to_ascii(input_image, output_width, pattern, font_height_to_width, con
 
     output_ascii = [(pattern[int(adjust(b) * len(pattern) / 256)] if b != -1 else "\n") for b in brightnesses]
     return ("".join(output_ascii))[:-1]
+
 
 def ascii_to_image(input_ascii, image_width, image_height, font):
     # Use PIL image and convert to cv2 at the end; cv2 does not support custom fonts
