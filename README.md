@@ -1,6 +1,6 @@
 # ascii-art-converter
 
-Converts videos into ASCII art. Uses Python with opencv, pillow and moviepy.
+Converts videos into ASCII art. Uses Python with OpenCV, Pillow and MoviePy.
 
 ## Setup
 
